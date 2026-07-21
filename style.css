@@ -1,0 +1,705 @@
+/* ============================================================
+   1) RESET & DESIGN TOKENS (ตัวแปรสี / ระยะห่าง / ฟอนต์ ทั้งหมด)
+   เก็บทุกอย่างไว้ที่เดียว เพื่อให้แก้สี/ฟอนต์ทีเดียวเปลี่ยนทั้งเว็บ
+   ============================================================ */
+:root{
+  /* โทนสีตามภาพที่ให้มา: เขียวสด > เขียวเข้ม > ชมพูส้ม > ชมพูอ่อน */
+  --green:        #59AC77;   /* เขียวหลัก ใช้เป็น accent/ปุ่ม */
+  --green-dark:   #2E5A3E;   /* เขียวเข้ม ใช้เป็นหัวข้อ/พื้นหลังเข้ม */
+  --green-deep:   #1E3D29;   /* เขียวเข้มสุด ใช้เป็นตัวหนังสือหลัก */
+  --coral:        #F6A6AA;   /* ชมพูส้ม ใช้เป็น accent รอง/แท็ก */
+  --blush:        #FBD9DA;   /* ชมพูอ่อน ใช้เป็นพื้นหลังส่วน */
+  --cream:        #FFFCF9;   /* ครีมขาว พื้นหลังหลัก อ่านสบายตา */
+  --ink:          #20342A;   /* สีตัวหนังสือหลัก (เขียวเข้มเกือบดำ) */
+  --ink-soft:     #4B5F55;   /* สีตัวหนังสือรอง */
+  --white:        #ffffff;
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 10px;
+  --shadow-soft: 0 10px 30px rgba(30,61,41,0.10);
+  --shadow-pop:  0 14px 34px rgba(89,172,119,0.28);
+  --max-width: 1120px;
+  --font-head: 'Kanit', sans-serif;
+  --font-body: 'Sarabun', sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; }
+
+/* เคารพผู้ใช้ที่ปิดอนิเมชัน (accessibility) */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+}
+
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{ font-family:var(--font-head); color:var(--green-deep); line-height:1.25; }
+
+a{ text-decoration:none; color:inherit; }
+ul{ list-style:none; }
+img{ max-width:100%; display:block; }
+
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+.section{ padding:110px 0 90px; position:relative; }
+
+.section-tag{
+  display:inline-block;
+  font-family:var(--font-head);
+  font-size:13px;
+  letter-spacing:2px;
+  color:var(--green);
+  background:rgba(89,172,119,0.12);
+  padding:6px 16px;
+  border-radius:999px;
+  margin-bottom:16px;
+}
+
+.section-title{
+  font-size:clamp(28px,4vw,42px);
+  font-weight:600;
+  margin-bottom:14px;
+}
+
+.section-desc{
+  color:var(--ink-soft);
+  max-width:560px;
+  font-size:16px;
+  margin-bottom:56px;
+}
+
+/* ปุ่มหลัก แบบ Playful: โค้งมน มีเงาสี และขยับตอน hover */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-head);
+  font-weight:500;
+  font-size:15px;
+  padding:14px 28px;
+  border-radius:999px;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, background .25s ease;
+}
+.btn-primary{
+  background:var(--green-deep);
+  color:var(--cream);
+  box-shadow:var(--shadow-pop);
+}
+.btn-primary:hover{ transform:translateY(-3px) scale(1.03); box-shadow:0 18px 36px rgba(89,172,119,.4); }
+.btn-outline{
+  background:transparent;
+  border-color:var(--green-deep);
+  color:var(--green-deep);
+}
+.btn-outline:hover{ background:var(--green-deep); color:var(--cream); transform:translateY(-3px); }
+
+/* ============================================================
+   2) NAVBAR — ลอยอยู่บนสุด แบบแคปซูล (pill) โปร่งแสงเล็กน้อย
+   ============================================================ */
+.navbar{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:1000;
+  padding:18px 0;
+  transition:background .3s ease, box-shadow .3s ease, padding .3s ease;
+}
+.navbar.scrolled{
+  background:rgba(255,252,249,0.85);
+  backdrop-filter:blur(10px);
+  box-shadow:0 6px 24px rgba(30,61,41,.08);
+  padding:12px 0;
+}
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-family:var(--font-head);
+  font-weight:600;
+  font-size:20px;
+  color:var(--green-deep);
+}
+.logo span{ color:var(--green); }
+
+.nav-links{
+  display:flex;
+  gap:6px;
+  background:var(--white);
+  padding:6px;
+  border-radius:999px;
+  box-shadow:var(--shadow-soft);
+}
+.nav-links a{
+  font-family:var(--font-head);
+  font-size:14px;
+  font-weight:500;
+  padding:9px 18px;
+  border-radius:999px;
+  color:var(--ink-soft);
+  transition:background .25s, color .25s;
+}
+.nav-links a:hover{ background:var(--blush); color:var(--green-deep); }
+
+/* ปุ่ม hamburger สำหรับจอมือถือ */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:var(--white);
+  border:none;
+  padding:12px;
+  border-radius:12px;
+  box-shadow:var(--shadow-soft);
+  cursor:pointer;
+}
+.hamburger span{ width:20px; height:2px; background:var(--green-deep); border-radius:2px; transition:.3s; }
+.hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2){ opacity:0; }
+.hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+/* ============================================================
+   3) HERO / หน้าแรก — แนะนำตัว
+   มี blob สีเขียว-ชมพูลอยเบา ๆ ด้านหลัง (signature ของหน้านี้)
+   ============================================================ */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:110px;
+  position:relative;
+}
+
+/* blob พื้นหลัง สร้างด้วย border-radius แปลก ๆ + อนิเมชันขยับช้า ๆ */
+.blob{
+  position:absolute;
+  border-radius:44% 56% 62% 38% / 45% 40% 60% 55%;
+  filter:blur(2px);
+  z-index:0;
+  animation:float 9s ease-in-out infinite;
+  opacity:.85;
+}
+.blob-1{ width:420px; height:420px; background:var(--blush); top:-60px; right:-120px; }
+.blob-2{ width:260px; height:260px; background:rgba(89,172,119,.25); bottom:20px; left:-100px; animation-delay:-3s; }
+@keyframes float{
+  0%,100%{ transform:translateY(0) rotate(0deg); }
+  50%{ transform:translateY(-24px) rotate(8deg); }
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:60px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+
+.eyebrow{
+  font-family:var(--font-head);
+  color:var(--green);
+  font-weight:500;
+  margin-bottom:16px;
+  display:flex; align-items:center; gap:8px;
+}
+.eyebrow .wave { display:inline-block; animation:wave 2.4s infinite; transform-origin:70% 70%; }
+.eyebrow .float {display: inline-block;animation: float 3s ease-in-out infinite;}
+.eyebrow .sparkle {display: inline-block;animation: sparkle 1.8s ease-in-out infinite;}
+@keyframes wave{
+  0%,60%,100%{ transform:rotate(0deg); }
+  10%{ transform:rotate(14deg); }
+  20%{ transform:rotate(-8deg); }
+  30%{ transform:rotate(14deg); }
+  40%{ transform:rotate(-4deg); }
+}
+@keyframes sparkle {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: scale(1.3) rotate(15deg); 
+    opacity: 0.6; 
+  }
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* อยู่ที่ตำแหน่งปกติ */
+  }
+  50% {
+    transform: translateY(-8px); /* ลอยขึ้นไปข้างบน 8px */
+  }
+}
+
+
+.hero h1{
+  font-size:clamp(34px,5.2vw,58px);
+  font-weight:700;
+  margin-bottom:10px;
+}
+.hero h1 .highlight{
+  color:var(--green);
+  position:relative;
+}
+/* ขีดใต้ชื่อ แบบลายมือ วาดด้วย SVG background */
+.hero h1 .highlight::after{
+  content:"";
+  position:absolute; left:0; bottom:-6px;
+  width:100%; height:10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20'%3E%3Cpath d='M2 15 Q50 2 100 12 T198 10' stroke='%23F6A6AA' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+}
+
+.hero-role{
+  font-size:19px;
+  color:var(--ink-soft);
+  margin-bottom:22px;
+}
+.hero-role strong{ color:var(--green-dark); }
+
+.hero p.bio{
+  max-width:520px;
+  color:var(--ink-soft);
+  margin-bottom:34px;
+}
+
+.hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:46px; }
+
+/* การ์ดข้อมูลการศึกษา ลอยอยู่มุมล่างของ hero text */
+.edu-card{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  background:var(--white);
+  border-radius:var(--radius-md);
+  padding:16px 22px;
+  box-shadow:var(--shadow-soft);
+  max-width:460px;
+}
+.edu-card .icon{
+  width:44px; height:44px; flex:0 0 auto;
+  background:var(--green);
+  border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--white);
+}
+.edu-card .txt{ font-size:14.5px; color:var(--ink-soft); }
+.edu-card .txt b{ color:var(--green-deep); display:block; font-family:var(--font-head); font-size:15px; }
+
+/* กรอบรูปโปรไฟล์ ทรงเลอะ (blob mask) แทนสี่เหลี่ยมธรรมดา */
+.photo-wrap{
+  position:relative;
+  display:flex;
+  justify-content:center;
+}
+.photo-frame{
+  width:min(360px,90%);
+  aspect-ratio:1/1.05;
+  background:linear-gradient(160deg,var(--green) 0%,var(--green-dark) 80%);
+  border-radius:42% 58% 60% 40% / 46% 42% 58% 54%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 26px 50px rgba(46,90,62,.35);
+  position:relative;
+  overflow:hidden;
+}
+/* 
+  TODO: แทนที่ svg ไอคอนด้านล่างด้วยรูปถ่ายจริงของคุณ
+  เช่น <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;">
+*/
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.photo-frame .caption{
+  position:absolute; bottom:22px;
+  font-family:var(--font-head); font-size:12.5px; color:rgba(255,255,255,.85);
+  background:rgba(0,0,0,.15); padding:6px 14px; border-radius:999px;
+}
+.dot-deco{
+  position:absolute;
+  width:14px; height:14px; border-radius:50%;
+  background:var(--coral);
+  top:8%; left:6%;
+  box-shadow:26px 40px 0 -2px var(--green), 10px 90px 0 -4px var(--blush);
+}
+
+/* ============================================================
+   4) PROJECTS — ผลงาน (การ์ดพลิกได้ = signature element ของหน้านี้)
+   คลิกที่การ์ด เพื่อพลิกดูรายละเอียดแบบ STAR
+   ============================================================ */
+.projects{ background:var(--white); }
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:32px;
+}
+
+/* โครงสร้าง flip-card: outer ครอบ perspective, inner หมุน */
+.flip-card{
+  perspective:1400px;
+  height:430px;
+  cursor:pointer;
+}
+.flip-inner{
+  position:relative;
+  width:100%; height:100%;
+  transition:transform .7s cubic-bezier(.45,.05,.15,1.05);
+  transform-style:preserve-3d;
+}
+.flip-card.flipped .flip-inner{ transform:rotateY(180deg); }
+
+.flip-front,.flip-back{
+  position:absolute; inset:0;
+  backface-visibility:hidden;
+  border-radius:var(--radius-lg);
+  padding:28px;
+  display:flex; flex-direction:column;
+  box-shadow:var(--shadow-soft);
+}
+.flip-front{
+  background:var(--cream);
+  border:2px solid rgba(89,172,119,.15);
+}
+.flip-back{
+  background:var(--green-deep);
+  color:var(--blush);
+  transform:rotateY(180deg);
+  overflow-y:auto;
+}
+
+.proj-thumb{
+  height:150px;
+  border-radius:var(--radius-md);
+  background:linear-gradient(135deg,var(--green) 0%, var(--coral) 100%);
+  margin-bottom:20px;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,.9);
+  font-family:var(--font-head);
+  font-size:14px;
+}
+.proj-tags{ display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 auto; }
+.proj-tags span{
+  font-size:12px; font-family:var(--font-head);
+  background:var(--blush); color:var(--green-deep);
+  padding:5px 12px; border-radius:999px;
+}
+.flip-hint{
+  font-size:12.5px; color:var(--ink-soft); opacity:.7;
+  display:flex; align-items:center; gap:6px; margin-top:14px;
+}
+
+.star-row{ margin-bottom:12px; }
+.star-row .label{
+  font-family:var(--font-head); font-size:12px; letter-spacing:1px;
+  color:var(--green); text-transform:uppercase; margin-bottom:3px;
+}
+.star-row p{ font-size:14px; color:rgba(255,255,255,.92); }
+
+/* ============================================================
+   5) SKILLS — ทักษะ (Hard / Soft / Languages)
+   ============================================================ */
+.skills{ background:var(--blush); }
+.skills-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+.skill-card{
+  background:var(--white);
+  border-radius:var(--radius-lg);
+  padding:32px;
+  box-shadow:var(--shadow-soft);
+}
+.skill-card h3{
+  font-size:19px; margin-bottom:20px;
+  display:flex; align-items:center; gap:10px;
+}
+.pill-group{ display:flex; flex-wrap:wrap; gap:10px; }
+
+/* แท็กทักษะ กระเด้งตอน hover ให้ความรู้สึก Playful */
+.pill{
+  font-size:13.5px;
+  font-family:var(--font-head);
+  padding:9px 16px;
+  border-radius:999px;
+  background:var(--green);
+  color:var(--white);
+  transition:transform .2s cubic-bezier(.34,1.56,.64,1);
+}
+.pill:hover{ transform:translateY(-4px) rotate(-2deg); }
+.pill.soft{ background:var(--coral); color:var(--green-deep); }
+
+/* การ์ดภาษา เต็มความกว้าง ใต้ 2 คอลัมน์ */
+.lang-card{ grid-column:1 / -1; }
+.lang-row{ margin-bottom:18px; }
+.lang-row:last-child{ margin-bottom:0; }
+.lang-row .lang-top{ display:flex; justify-content:space-between; font-size:14px; margin-bottom:8px; }
+.lang-top b{ font-family:var(--font-head); color:var(--green-deep); }
+.bar-track{ height:10px; background:var(--blush); border-radius:999px; overflow:hidden; }
+.bar-fill{
+  height:100%; border-radius:999px;
+  background:linear-gradient(90deg,var(--green),var(--green-dark));
+  width:0%; /* ค่าเริ่มต้น 0 แล้วขยายด้วย JS เมื่อ scroll มาถึง */
+  transition:width 1.1s cubic-bezier(.22,.9,.3,1);
+}
+
+/* ============================================================
+   6) ACTIVITIES — กิจกรรม แบบเส้นเวลา (timeline)
+   ============================================================ */
+.activities{ background:var(--cream); }
+.timeline{
+  position:relative;
+  max-width:760px;
+  margin:0 auto;
+  padding-left:34px;
+  border-left:3px dashed rgba(89,172,119,.35);
+}
+.timeline-item{
+  position:relative;
+  padding-bottom:44px;
+}
+.timeline-item:last-child{ padding-bottom:0; }
+
+/* จุดวงกลมบนเส้นเวลา: ตอนนี้ทำหน้าที่เป็น "ตัวรับ hover/focus" หลัก
+   เมาส์ชี้ค้างที่ตัวกิจกรรม (หรือโฟกัสด้วยคีย์บอร์ด) แล้วรูปจะเด้งขึ้นมาเอง
+   ยังกดได้เหมือนเดิมด้วย เผื่อผู้ใช้จอสัมผัส/มือถือที่ hover ไม่สะดวก */
+.timeline-dot{
+  position:absolute;
+  left:-44px; top:0;
+  width:16px; height:16px;
+  background:var(--coral);
+  border:3px solid var(--white);
+  box-shadow:0 0 0 3px var(--green);
+  border-radius:50%;
+  cursor:pointer;
+  padding:0;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), background .3s ease, box-shadow .3s ease;
+}
+.timeline-dot:hover{ transform:scale(1.25); }
+/* เมื่อรูปกำลังเปิดอยู่ ให้จุดเปลี่ยนเป็นสีเขียวเข้มและขยายใหญ่ขึ้น เป็นสัญญาณว่า "เปิดอยู่" */
+.timeline-dot.active{
+  background:var(--green-deep);
+  transform:scale(1.3);
+  box-shadow:0 0 0 4px var(--coral);
+}
+
+.timeline-item .date{
+  font-family:var(--font-head); font-size:12.5px; letter-spacing:1px;
+  color:var(--green); text-transform:uppercase; margin-bottom:6px;
+}
+.timeline-item h4{ font-size:18px; margin-bottom:4px; }
+.timeline-item .org{ font-size:14px; color:var(--ink-soft); margin-bottom:8px; font-style:italic; }
+.timeline-item p{ font-size:14.5px; color:var(--ink-soft); }
+
+/* กล่องรูปภาพกิจกรรม: ปกติซ่อนอยู่ (max-height:0 + ย่อเล็ก) แล้ว "เด้ง" ขึ้นมา
+   แบบ bounce (overshoot) เมื่อเมาส์ชี้ค้างที่กิจกรรมนั้น หรือโฟกัส/กดจุดวงกลม
+   คลิกที่ตัวรูปเพื่อเปิดดูภาพเต็มจอ (lightbox) */
+.activity-image{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:scale(.85);
+  transform-origin:top center;
+  margin-top:0;
+  border-radius:var(--radius-md);
+  cursor:zoom-in;
+  position:relative;
+  transition:max-height .45s cubic-bezier(.22,.9,.3,1),
+             opacity .3s ease,
+             transform .45s cubic-bezier(.34,1.56,.64,1),
+             margin-top .45s ease;
+}
+.activity-image.open{
+  max-height:280px;
+  opacity:1;
+  transform:scale(1);
+  margin-top:16px;
+}
+.activity-image img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:var(--radius-md);
+  display:block;
+  box-shadow:var(--shadow-soft);
+}
+/* placeholder ระหว่างที่ยังไม่ได้ใส่รูปจริง: แทนที่ <img> ด้วยรูปจริงของกิจกรรมนั้น ๆ */
+.activity-image .placeholder{
+  width:100%;
+  height:220px;
+  border-radius:var(--radius-md);
+  background:linear-gradient(135deg,var(--green) 0%,var(--coral) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(255,255,255,.95);
+  font-family:var(--font-head);
+  font-size:14px;
+  text-align:center;
+  box-shadow:var(--shadow-soft);
+  padding:12px;
+}
+/* ป้าย "ดูภาพเต็ม" มุมขวาล่างของรูป โผล่ตอน hover ที่ตัวรูปโดยตรง ช่วยบอกว่าคลิกได้ */
+.activity-image .zoom-hint{
+  position:absolute;
+  right:12px; bottom:12px;
+  display:flex; align-items:center; gap:6px;
+  background:rgba(30,61,41,.65);
+  color:var(--cream);
+  font-family:var(--font-head);
+  font-size:12.5px;
+  padding:7px 14px;
+  border-radius:999px;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .25s ease, transform .25s ease;
+  pointer-events:none;
+}
+.activity-image:hover .zoom-hint{ opacity:1; transform:translateY(0); }
+
+/* ============================================================
+   6.1) LIGHTBOX — ดูภาพเต็มจอ เมื่อคลิกที่รูปภาพกิจกรรม
+   ============================================================ */
+.lightbox{
+  position:fixed; inset:0;
+  background:rgba(20,32,26,.9);
+  z-index:3000;
+  display:flex; align-items:center; justify-content:center;
+  padding:40px;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .3s ease, visibility .3s ease;
+}
+.lightbox.active{ opacity:1; visibility:visible; }
+.lightbox-box{
+  max-width:min(720px,90vw);
+  width:100%;
+  transform:scale(.92);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.lightbox.active .lightbox-box{ transform:scale(1); }
+.lightbox-box img{
+  width:100%;
+  max-height:80vh;
+  object-fit:cover;
+  border-radius:var(--radius-lg);
+  display:block;
+  box-shadow:0 30px 60px rgba(0,0,0,.4);
+}
+.lightbox-box .placeholder{
+  width:100%;
+  height:min(60vh,420px);
+  border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,var(--green) 0%,var(--coral) 100%);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-family:var(--font-head); font-size:17px; text-align:center; padding:20px;
+  box-shadow:0 30px 60px rgba(0,0,0,.4);
+}
+.lightbox-close{
+  position:absolute;
+  top:26px; right:30px;
+  width:44px; height:44px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,.15);
+  color:var(--cream);
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  transition:background .25s ease, transform .25s ease;
+}
+.lightbox-close:hover{ background:var(--coral); color:var(--green-deep); transform:rotate(90deg); }
+
+/* ============================================================
+   7) CONTACT — ติดต่อ
+   ============================================================ */
+.contact{
+  background:var(--green-deep);
+  color:var(--cream);
+  border-radius:var(--radius-lg);
+  margin:0 24px;
+  max-width:calc(var(--max-width) - 48px);
+  margin-left:auto; margin-right:auto;
+  text-align:center;
+  overflow:hidden;
+  position:relative;
+}
+.contact .blob{ background:rgba(89,172,119,.3); }
+.contact-inner{ position:relative; z-index:1; padding:80px 24px; }
+.contact .section-tag{ background:rgba(255,255,255,.12); color:var(--blush); }
+.contact h2{ color:var(--cream); }
+.contact p.sub{ color:rgba(255,252,249,.75); max-width:480px; margin:0 auto 40px; }
+
+.contact-links{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+}
+.contact-links a{
+  display:flex; align-items:center; gap:10px;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.25);
+  padding:13px 24px;
+  border-radius:999px;
+  font-family:var(--font-head);
+  font-size:14.5px;
+  transition:background .25s, transform .25s;
+}
+.contact-links a:hover{ background:var(--coral); color:var(--green-deep); transform:translateY(-3px); border-color:var(--coral); }
+
+footer{
+  text-align:center;
+  padding:34px 24px;
+  font-size:13px;
+  color:var(--ink-soft);
+}
+
+/* ============================================================
+   8) SCROLL-REVEAL — องค์ประกอบค่อย ๆ ปรากฏตอนเลื่อนหน้าจอมาถึง
+   (ใส่ class="reveal" แล้ว JS ด้านล่างจะเติม class "show" ให้)
+   ============================================================ */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.show{ opacity:1; transform:translateY(0); }
+
+/* ============================================================
+   9) RESPONSIVE — ปรับสำหรับจอแท็บเล็ต/มือถือ
+   ============================================================ */
+@media (max-width:900px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .photo-wrap{ order:-1; }
+  .skills-grid{ grid-template-columns:1fr; }
+  .nav-links{ display:none; }
+  .hamburger{ display:flex; }
+
+  /* เมนูมือถือ: แสดงเป็น panel เต็มความกว้าง เมื่อกด hamburger */
+  .nav-links.mobile-open{
+    display:flex;
+    flex-direction:column;
+    position:fixed;
+    top:74px; left:16px; right:16px;
+    border-radius:20px;
+    padding:14px;
+  }
+  .nav-links.mobile-open a{ padding:14px 18px; text-align:center; }
+}
+
+@media (max-width:520px){
+  .section{ padding:80px 0 60px; }
+  .hero{ padding-top:96px; }
+  .edu-card{ flex-direction:column; text-align:center; }
+  .contact{ margin:0 12px; border-radius:20px; }
+}

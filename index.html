@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPAWITA | Portfolio </title>
+
+<!-- 
+  ฟอนต์: ใช้ "Kanit" สำหรับหัวข้อ (รูปทรงกลม ดูเล่นสนุกแบบ Playful)
+  และ "Sarabun" สำหรับเนื้อหา (อ่านง่าย สบายตาแบบ Minimalist)
+  ทั้งสองฟอนต์รองรับภาษาไทยเต็มรูปแบบ
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">Port<span>folio</span>.</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">หน้าแรก</a>
+      <a href="#projects">ผลงาน</a>
+      <a href="#skills">ทักษะ</a>
+      <a href="#activities">กิจกรรม</a>
+      <a href="#contact">ติดต่อ</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="เปิดเมนู">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     1) HOME / ABOUT ME — หน้าแรก / แนะนำตัว
+     ============================================================ -->
+<section class="hero" id="home">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="container hero-grid">
+    <div>
+      <h1 class="eyebrow">สุภาวิตา<span class="highlight">จันทร์ดี</span> <span class="float">🎈</span></h1>
+      
+
+      <!-- Headline: ชื่อ + ตำแหน่งที่ต้องการฝึกงาน -->
+      <p class="hero-role">
+        นักศึกษาชั้นปีที่ 4 คณะ<strong>วิศวกรรมศาสตร์</strong> สาขา<strong>วิศวกรรมคอมพิวเตอร์</strong><br>
+      </p>
+      <p class="bio">
+        มีความสนใจในการสร้างสรรค์ Digital Product ที่เชื่อมโยงระหว่าง Application, Database และ AI เข้าด้วยกัน พร้อมนำกระบวนการคิดเชิงวิเคราะห์และการแก้ปัญหามาลุยงานจริง ควบคู่กับการเรียนรู้เทคโนโลยีใหม่ๆ เพื่อร่วมขับเคลื่อนองค์กรให้เติบโต
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">ดูผลงานของฉัน →</a>
+        <a href="#contact" class="btn btn-outline">ติดต่อฉัน</a>
+      </div>
+
+      <!-- Education card: มหาวิทยาลัย/คณะ/สาขา/ชั้นปี/เกรดเฉลี่ย -->
+      <div class="edu-card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3 1 8l11 5 9-4.1V17h2V8L12 3Z" fill="currentColor"/><path d="M5 10.5V15c0 1.7 3.1 3.5 7 3.5s7-1.8 7-3.5v-4.5l-7 3.2-7-3.2Z" fill="currentColor"/></svg>
+        </div>
+        <div class="txt">
+          <b>มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี</b>
+          <b>Rajamangala University of Technology Thanyaburi</b>
+
+          คณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์ | ชั้นปีที่ 4 | เกรดเฉลี่ย 3.69
+        </div>
+      </div>
+    </div>
+
+    <!-- รูปโปรไฟล์: แทนที่ svg ด้วย <img> รูปจริงของคุณได้เลย -->
+    <div class="photo-wrap">
+  <div class="dot-deco"></div>
+  <div class="photo-frame">
+    <img src="IMG_2888-Photoroom.png" alt="My Photo">
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     2) PROJECTS / PORTFOLIO — ผลงาน (สำคัญที่สุด)
+     คลิกที่การ์ดเพื่อพลิกดูรายละเอียดแบบระบบ STAR
+     ============================================================ -->
+<section class="projects section" id="projects">
+  <div class="container">
+    <p class="section-tag reveal">ผลงาน</p>
+    <h2 class="section-title reveal">โปรเจกต์</h2>
+    <p class="section-desc reveal">คลิกที่การ์ดเพื่อดูรายละเอียดโปรเจกต์แบบเต็ม ๆ (Context → Role → Process → Outcome)</p>
+
+    <div class="project-grid">
+
+      <!-- การ์ดโปรเจกต์ที่ 1 -->
+      <div class="flip-card reveal" tabindex="0" role="button" aria-label="เปิดดูรายละเอียดโปรเจกต์ ระบบจองห้องเรียนออนไลน์">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="proj-thumb"><img src="หน้าแอป.jpeg" alt="โปรเจกต์ 1"></div><br>
+      </p>
+            <h3>โปรแกรมทดสอบทางด้านจิตวิทยาโดยใช้สีและคำ (SCWTP)</h3>
+            <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;">โปรเจกต์จบการศึกษา</p>
+            <div class="proj-tags"><span>Flutter</span><span>Dart</span><span>Python</span><span>phpMyAdmin</span></div>
+            <div class="flip-hint">↻ คลิกเพื่อดูรายละเอียด</div>
+          </div>
+          <div class="flip-back">
+            <div class="star-row"><div class="label">Context</div><p>การทดสอบ Stroop Test แบบเดิมใช้การพิมพ์/เขียน ซึ่งกระตุ้นการประมวลผลของสมองได้ไม่เท่าการตอบด้วยเสียง และขาดระบบติดตามผลแบบ Real-time</p></div>
+            <div class="star-row"><div class="label">Role</div><p>ผู้พัฒนาแอปพลิเคชันและโมเดลประมวลผลเสียง ทำงานร่วมกับเพื่อน 2 คน</p></div>
+            <div class="star-row"><div class="label">Process</div><p>ออกแบบ UX/UI แอปด้วย Flutter, เทรนโมเดล Speech Recognition บน Google Colab แปลงเป็น TFLite รันแบบ Near Real-Time และจัดการฐานข้อมูลด้วย phpMyAdmin</p></div>
+            <div class="star-row"><div class="label">Outcome</div><p>ยกระดับการประมวลผล cognitive functions ด้วยการตอบด้วยเสียงใกล้เคียง Real-time พร้อม Dashboard สรุปผลและติดตามข้อมูลสุขภาพจิตให้แพทย์วินิจฉัยได้ทันที</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- การ์ดโปรเจกต์ที่ 2 -->
+      <div class="flip-card reveal" tabindex="0" role="button" aria-label="เปิดดูรายละเอียดโปรเจกต์ แอปติดตามค่าใช้จ่าย">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="proj-thumb"><img src="rain sensor smarthome project iot.png" alt="โปรเจกต์ 1"></div><br>
+            <h3>ระบบกันสาดและเก็บผ้าอัตโนมัติ (rain sensor smarthome)</h3>
+            <p style="font-size:14px;color:var(--ink-soft);margin-top:6px;">โปรเจกต์รายวิชา Internet of Things (IoT)</p>
+            <div class="proj-tags"><span>WEMOS D1 ESP8266</span><span>C++</span><span>MQTT</span></div>
+            <div class="flip-hint">↻ คลิกเพื่อดูรายละเอียด</div>
+          </div>
+          <div class="flip-back">
+            <div class="star-row"><div class="label">Context</div><p>ปัญหาฝนตกขณะไม่มีคนอยู่บ้าน ทำให้ผ้าตากไว้เปียกชื้น และไม่มีระบบแจ้งเตือนหรือสลับโหมดการทำงานแบบ Real-time</p></div>
+            <div class="star-row"><div class="label">Role</div><p>ผู้พัฒนาระบบควบคุมฮาร์ดแวร์และเซนเซอร์ ทำงานร่วมกับเพื่อน 2 คน</p></div>
+            <div class="star-row"><div class="label">Process</div><p>พัฒนา State Machine บน Arduino เชื่อมต่อ Rain Sensor และ Servo Motor สั่งการกาง-เก็บกันสาดอัตโนมัติ พร้อมรองรับ Manual Override และส่งแจ้งเตือนผ่าน MQTT</p></div>
+            <div class="star-row"><div class="label">Outcome</div><p>ระบบทำงานอัตโนมัติตอบสนองต่อฝนได้ทันทีแบบ Real-time ช่วยป้องกันผ้าเปียกชื้นได้ 90% และเพิ่มความสะดวกในการควบคุมผ่านระบบ Smart Home</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3) SKILLS — ทักษะและความเชี่ยวชาญ
+     ============================================================ -->
+<section class="skills section" id="skills">
+  <div class="container">
+    <p class="section-tag reveal">ทักษะ</p>
+    <h2 class="section-title reveal">ทักษะและความเชี่ยวชาญ</h2>
+    <p class="section-desc reveal">เครื่องมือที่ถนัด ทักษะการทำงานร่วมกับผู้อื่น และความสามารถทางภาษา</p>
+
+    <div class="skills-grid">
+      <!-- Hard Skills -->
+      <div class="skill-card reveal">
+        <h3>🛠️ Hard Skills</h3>
+        <div class="pill-group">
+          <span class="pill">Flutter</span>
+          <span class="pill">Dart</span>
+          <span class="pill">Python</span>
+          <span class="pill">HTML/CSS</span>
+          <span class="pill">Figma</span>
+          <span class="pill">MySQL</span>
+          <span class="pill">phpMyAdmin</span>
+          <span class="pill">TensorFlow Lite</span>
+          <span class="pill">ESP32 / Arduino</span>
+          <span class="pill">Telegram API</span>
+          <span class="pill">MQTT</span>
+          <span class="pill">Git / GitHub</span>
+        </div>
+      </div>
+
+      <!-- Soft Skills -->
+      <div class="skill-card reveal">
+        <h3>🤝 Soft Skills</h3>
+        <div class="pill-group">
+          <span class="pill soft">วิเคราะห์และวางโครงสร้างระบบอย่างมีหลักการ</span>
+          <span class="pill soft">เรียนรู้ไวพร้อมแก้โจทย์ยากและจุดบกพร่องเสมอ</span>
+          <span class="pill soft">ทำงานร่วมกับผู้อื่นและรับฟังความคิดเห็นได้ดี</span>
+          <span class="pill soft">นำเสนอผลงานและข้อมูลเทคนิคได้อย่างชัดเจน</span>
+          <span class="pill soft">รับผิดชอบหน้าที่และตรงต่อเวลา</span>
+          <span class="pill soft">สานเทคโนโลยีและดีไซน์ เพื่อแก้ปัญหา ได้อย่างมีประสิทธิภาพ</span>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="skill-card lang-card reveal">
+        <h3>🌐 Languages</h3>
+        <div class="lang-row">
+          <div class="lang-top"><b>ภาษาไทย</b><span>เจ้าของภาษา</span></div>
+          
+        </div>
+        <div class="lang-row">
+          <div class="lang-top"><b>ภาษาอังกฤษ</b><span>สื่อสารเบื้องต้น (Basic)</span></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4) ACTIVITIES / EXPERIENCES — กิจกรรม
+     ============================================================ -->
+<section class="activities section" id="activities">
+  <div class="container">
+    <p class="section-tag reveal">กิจกรรม</p>
+    <h2 class="section-title reveal">กิจกรรมและประสบการณ์</h2>
+    <p class="section-desc reveal">กิจกรรมทั้งในและนอกมหาวิทยาลัย </p>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <button class="timeline-dot" type="button" aria-expanded="false" aria-controls="act-img-1" aria-label="แสดงรูปภาพกิจกรรม ค่ายอาสาพัฒนาชนบท"></button>
+        <div class="date">กรกฎาคม 2569</div>
+        <h4>รางวัลเหรียญทองแดง (Bronze Prize) | RMUTT Innovation and Invention Awards 2026</h4>
+        <div class="org">งานมหกรรมวิจัยและนวัตกรรม RMUTT EXPO 2026</div>
+        <p>ออกแบบและพัฒนานวัตกรรมสิ่งประดิษฐ์และระบบในงาน RMUTT EXPO 2026 แสดงทักษะการประยุกต์ สะท้อนความเชี่ยวชาญด้านการคิดค้นนวัตกรรมและการสร้าง Prototype เชิงวิศวกรรม</p>
+        <div class="activity-image" id="act-img-1">
+          <div class="placeholder"><img src="ใบประกาศ03.jpeg""><img src="งาน.jpeg""></div>
+          <span class="zoom-hint">🔍 ดูภาพเต็ม</span>
+        </div>
+      </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <!-- จุดวงกลม + การชี้เมาส์ค้างที่การ์ดนี้ทั้งใบ จะทำให้รูปด้านล่างเด้งขึ้นมา -->
+        <button class="timeline-dot" type="button" aria-expanded="false" aria-controls="act-img-1" aria-label="แสดงรูปภาพกิจกรรม ค่ายอาสาพัฒนาชนบท"></button>
+        <div class="date">มิถุนายน 2569</div>
+        <h4>รางวัลรองชนะเลิศอันดับ 1 (รุ่น Open) | Physical AI Makerthon 2026 (Maker Faire Siam)</h4>
+        <div class="org">NEX Hall, สยามพารากอน</div>
+        <p>พัฒนาและประยุกต์ใช้ Physical AI สร้างสรรค์นวัตกรรมฮาร์ดแวร์ที่เชื่อมต่อกับ AI ในระดับแข่งขันรุ่นไม่จำกัดอายุ สะท้อนทักษะ Edge AI/IoT, Problem-Solving และการสร้าง Prototype ภายใต้เวลาที่จำกัด</p>
+        <div class="activity-image" id="act-img-1" >
+          <div class="placeholder"><img src="ใบประกาศ02.jpeg""><img src="แข่ง.jpeg""></div>
+          <span class="zoom-hint">🔍 ดูภาพเต็ม</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <button class="timeline-dot" type="button" aria-expanded="false" aria-controls="act-img-3" aria-label="แสดงรูปภาพ Google UX Design Certificate"></button>
+        <div class="date">กันยายน 2568</div>
+        <h4>เข้าร่วมแข่งขัน ICPC Thailand National Contest 2025</h4>
+        <div class="org">คณะวิทยาศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง)</div>
+        <p>ผู้เข้าร่วมการแข่งขัน ICPC Thailand National Contest 2025 : วางแผนและเขียนโค้ดแก้โจทย์อัลกอริทึมซับซ้อนร่วมกับทีม ประยุกต์ใช้ทักษะการคิดเชิงวิเคราะห์และการบริหารเวลาเพื่อส่งมอบ Solution ที่มีประสิทธิภาพสูงสุด</p>
+        <div class="activity-image" id="act-img-3" >
+          <div class="placeholder"><img src="1762499837900.jpeg""></div>
+          <span class="zoom-hint">🔍 ดูภาพเต็ม</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <button class="timeline-dot" type="button" aria-expanded="false" aria-controls="act-img-2" aria-label="แสดงรูปภาพกิจกรรม กรรมการนักศึกษาคณะ"></button>
+        <div class="date">สิงหาคม</div>
+        <h4>กรรมการตัดสินการแข่งขัน (ประเภทหุ่นยนต์ ROS) | WRG Thailand Championship 2025 </h4>
+        <div class="org">Robot Realm ชั้น 3 ศูนย์การค้าเซียร์รังสิต</div>
+        <p>ทำหน้าที่กำกับดูแล ควบคุมการแข่งขัน และประเมินการทำงานของหุ่นยนต์ระบบ ROS ให้เป็นไปตามกติกา สะท้อนความเชี่ยวชาญด้าน ROS และระบบหุ่นยนต์อัตโนมัติ</p>
+        <div class="activity-image" id="act-img-2">
+          <div class="placeholder"><img src="ใบประกาศ01.jpeg""><img src="กรรมการ.jpeg""></div>
+          <span class="zoom-hint">🔍 ดูภาพเต็ม</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <button class="timeline-dot" type="button" aria-expanded="false" aria-controls="act-img-4" aria-label="แสดงรูปภาพกิจกรรม จิตอาสาสอนหนังสือ"></button>
+        <div class="date">มิถุนายน 2568</div>
+        <h4>อบรมสตาฟวันปฐมนิเทศ ประจำปี 2568</h4>
+        <div class="org">มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี</div>
+        <p>ผ่านการอบรมเตรียมความพร้อมและปฏิบัติหน้าที่สตาฟในงานปฐมนิเทศนักศึกษาใหม่ ปี 2568 โดยร่วมวางแผน ดูแลการดำเนินงาน และอำนวยความสะดวก เพื่อให้กิจกรรมเป็นไปอย่างราบรื่นและสร้างประสบการณ์ที่ดีแก่นักศึกษาใหม่</p>
+        <div class="activity-image" id="act-img-4">
+          <div class="placeholder"><img src="สตาฟ.jpeg""></div>
+          <span class="zoom-hint">🔍 ดูภาพเต็ม</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LIGHTBOX — โผล่ขึ้นมาแสดงรูปภาพขนาดเต็มเมื่อคลิกรูปกิจกรรม
+     เนื้อหาข้างในถูกเติมด้วย JS ตอนคลิก (ดูฟังก์ชัน openLightbox)
+     ============================================================ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="ปิดรูปภาพ">×</button>
+  <div class="lightbox-box" id="lightboxBox"></div>
+</div>
+
+<!-- ============================================================
+     5) CONTACT — ช่องทางการติดต่อ
+     ============================================================ -->
+<section class="section" style="padding-top:40px;">
+  <div class="container">
+    <div class="contact reveal">
+      <div class="blob blob-1" style="top:-100px;right:-140px;"></div>
+      <div class="contact-inner" id="contact">
+        <p class="section-tag">ช่องทางการติดต่อ</p>
+        <h2 class="section-title">สามารถติดต่อได้</h2>
+        <p class="sub">สนใจร่วมงาน แลกเปลี่ยนไอเดีย หรือพูดคุยเกี่ยวกับโอกาสในการฝึกงาน สามารถติดต่อเข้ามาได้เสมอ ยินดีตอบกลับทุกข้อความ</p>
+
+        <div class="contact-links">
+          <a href="mailto:SUPAWITA2921@email.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 5h18v14H3V5Z" stroke="currentColor" stroke-width="1.6"/><path d="m3 6 9 7 9-7" stroke="currentColor" stroke-width="1.6"/></svg>
+            SUPAWITA2921@email.com
+          </a>
+          <a href="tel:0834971697">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2 2C10 19 5 14 4 6a2 2 0 0 1 2-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            083-497-1697
+          </a>
+          <a href="https://github.com/Supawita8" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.8c.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/supawita-jundee" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.66 4.78 6.12V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.15 1.46-2.15 2.96V21h-4V9Z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* ============================================================
+   JAVASCRIPT — ควบคุมส่วน Interactive ทั้งหมด
+   1) เปลี่ยนพื้นหลัง navbar ตอนเลื่อนหน้าจอ
+   2) เปิด/ปิดเมนูมือถือ (hamburger)
+   3) พลิกการ์ดโปรเจกต์เมื่อคลิก/กด Enter
+   3.5) hover การ์ดกิจกรรมแล้วรูปเด้งขึ้นมา + คลิกรูปเพื่อดูภาพเต็มจอ (lightbox)
+   4) แสดงองค์ประกอบแบบ fade-in ตอนเลื่อนมาถึง (scroll reveal)
+   5) เติมหลอดระดับภาษาตอนเลื่อนมาถึง
+   ============================================================ */
+
+// 1) Navbar เปลี่ยนพื้นหลังเมื่อเลื่อนลงมาเกิน 40px
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// 2) เมนูมือถือ: กด hamburger แล้วสลับ class เปิด/ปิด
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('mobile-open');
+});
+// ปิดเมนูอัตโนมัติเมื่อคลิกลิงก์ใด ๆ (มือถือ)
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('mobile-open');
+  });
+});
+
+// 3) พลิกการ์ดโปรเจกต์: คลิกเมาส์ หรือกด Enter/Space (สำหรับคีย์บอร์ด)
+document.querySelectorAll('.flip-card').forEach(card => {
+  const toggle = () => card.classList.toggle('flipped');
+  card.addEventListener('click', toggle);
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+  });
+});
+
+// 3.5) กิจกรรม: เมาส์ชี้ค้างที่การ์ดกิจกรรม (hover) แล้วรูปจะ "เด้ง" ขึ้นมาเอง
+// ส่วนคีย์บอร์ด/มือถือที่ hover ไม่สะดวก ยังกดปุ่มวงกลมเพื่อเปิด-ปิดรูปได้เหมือนเดิม
+// จากนั้นคลิกที่ตัวรูป (หรือปุ่มวงกลมอีกครั้งตอนรูปเปิดอยู่) เพื่อดูภาพเต็มจอ (lightbox)
+document.querySelectorAll('.timeline-item').forEach(item => {
+  const dot = item.querySelector('.timeline-dot');
+  const imageBox = item.querySelector('.activity-image');
+
+  const showImage = () => {
+    imageBox.classList.add('open');
+    dot.classList.add('active');
+    dot.setAttribute('aria-expanded', 'true');
+  };
+  const hideImage = () => {
+    imageBox.classList.remove('open');
+    dot.classList.remove('active');
+    dot.setAttribute('aria-expanded', 'false');
+  };
+
+  // Hover ด้วยเมาส์: ชี้ค้างที่การ์ดทั้งใบ (ไม่ใช่แค่จุดวงกลม) แล้วรูปเด้งขึ้นมา
+  item.addEventListener('mouseenter', showImage);
+  item.addEventListener('mouseleave', hideImage);
+
+  // โฟกัสด้วยคีย์บอร์ด (กด Tab มาที่จุดวงกลม) ก็ให้รูปโผล่ขึ้นมาเหมือนกัน เพื่อการเข้าถึง
+  dot.addEventListener('focus', showImage);
+  dot.addEventListener('blur', hideImage);
+
+  // กดปุ่มวงกลม (สำหรับจอสัมผัส/มือถือที่ไม่มี hover): แตะครั้งแรกเปิดรูป, แตะซ้ำเปิด lightbox
+  dot.addEventListener('click', () => {
+    if (!imageBox.classList.contains('open')) {
+      showImage();
+    } else {
+      openLightbox(imageBox);
+    }
+  });
+
+  // คลิกที่ตัวรูปโดยตรง (ตอนที่มันเด้งขึ้นมาแล้ว) เพื่อดูภาพขนาดเต็ม
+  imageBox.addEventListener('click', () => openLightbox(imageBox));
+});
+
+// เปิด lightbox: คัดลอกเนื้อหารูป (img จริง หรือ placeholder) ไปแสดงแบบขยายใหญ่กลางจอ
+const lightbox = document.getElementById('lightbox');
+const lightboxBox = document.getElementById('lightboxBox');
+const lightboxClose = document.getElementById('lightboxClose');
+
+function openLightbox(imageBox){
+  const realImg = imageBox.querySelector('img');
+  if (realImg) {
+    lightboxBox.innerHTML = `<img src="${realImg.src}" alt="${imageBox.dataset.caption || ''}">`;
+  } else {
+    lightboxBox.innerHTML = `<div class="placeholder">📷 ${imageBox.dataset.caption || 'ภาพกิจกรรม'}<br><span style="font-size:13px;opacity:.85;">(ยังไม่ได้ใส่รูปจริง)</span></div>`;
+  }
+  lightbox.classList.add('active');
+  lightbox.setAttribute('aria-hidden', 'false');
+}
+function closeLightbox(){
+  lightbox.classList.remove('active');
+  lightbox.setAttribute('aria-hidden', 'true');
+}
+lightboxClose.addEventListener('click', closeLightbox);
+// คลิกพื้นหลังสีเข้ม (นอกรูป) เพื่อปิด
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+// กด Esc เพื่อปิด lightbox ได้ด้วย
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+// 4) IntersectionObserver: เพิ่ม class "show" ให้ทุก .reveal ที่เลื่อนเข้ามาในจอ
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      revealObserver.unobserve(entry.target); // เล่นครั้งเดียวพอ
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// 5) เติมหลอดระดับภาษาให้ค่อย ๆ วิ่งไปตามเปอร์เซ็นต์ที่กำหนดใน data-percent
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      bar.style.width = bar.dataset.percent + '%';
+      barObserver.unobserve(bar);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.bar-fill').forEach(el => barObserver.observe(el));
+</script>
+
+</body>
+</html>
