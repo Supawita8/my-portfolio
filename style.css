@@ -430,6 +430,25 @@ img{ max-width:100%; display:block; }
   font-size:19px; margin-bottom:20px;
   display:flex; align-items:center; gap:10px;
 }
+
+.skill-subgroup {
+  margin-top: 14px;
+}
+
+.sub-title {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .pill-group{ display:flex; flex-wrap:wrap; gap:10px; }
 
 /* แท็กทักษะ กระเด้งตอน hover ให้ความรู้สึก Playful */
@@ -446,17 +465,45 @@ img{ max-width:100%; display:block; }
 .pill.soft{ background:var(--coral); color:var(--green-deep); }
 
 /* การ์ดภาษา เต็มความกว้าง ใต้ 2 คอลัมน์ */
-.lang-card{ grid-column:1 / -1; }
-.lang-row{ margin-bottom:18px; }
-.lang-row:last-child{ margin-bottom:0; }
-.lang-row .lang-top{ display:flex; justify-content:space-between; font-size:14px; margin-bottom:8px; }
-.lang-top b{ font-family:var(--font-head); color:var(--green-deep); }
-.bar-track{ height:10px; background:var(--blush); border-radius:999px; overflow:hidden; }
-.bar-fill{
-  height:100%; border-radius:999px;
-  background:linear-gradient(90deg,var(--green),var(--green-dark));
-  width:0%; /* ค่าเริ่มต้น 0 แล้วขยายด้วย JS เมื่อ scroll มาถึง */
-  transition:width 1.1s cubic-bezier(.22,.9,.3,1);
+/* การ์ดภาษา */
+.lang-card {
+  width: 100%;
+  margin-top: 28px; /* เว้นระยะห่างจากกล่อง Soft Skills ด้านบน */
+}
+
+.lang-row { 
+  margin-bottom: 18px; /* แก้ไขไวยากรณ์ที่เว้นวรรคผิด */
+}
+
+.lang-row:last-child { 
+  margin-bottom: 0; 
+}
+
+.lang-row .lang-top { 
+  display: flex; 
+  justify-content: space-between; 
+  font-size: 14px; 
+  margin-bottom: 8px; 
+}
+
+.lang-top b { 
+  font-family: var(--font-head); 
+  color: var(--green-deep); 
+}
+
+.bar-track { 
+  height: 10px; 
+  background: var(--blush); 
+  border-radius: 999px; 
+  overflow: hidden; 
+}
+
+.bar-fill {
+  height: 100%; 
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green), var(--green-dark));
+  width: 0%; /* ค่าเริ่มต้น 0 แล้วขยายด้วย JS เมื่อ scroll มาถึง */
+  transition: width 1.1s cubic-bezier(.22, .9, .3, 1);
 }
 
 /* ============================================================
